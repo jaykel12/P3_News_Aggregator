@@ -69,27 +69,30 @@ $(document).ready(function () {
     <h3 class="sidebar-left-header">Categories</h3>
     <ul id="toggle-view">
     <li>
-        <h3>Sports</h3>
+        <h5>Sports</h5>
+        <span>&#43;</span>
         <div class="panel">
-            <h4><a href="javascript;">&#43;One</a></h4>
-            <h4><a href="javascript;">&#43;Two</a></h4>
-            <h4><a href="javascript;">&#43;Three</a></h4>
+            <p><strong><a href="#">One</a></strong></p>
+            <p><strong><a href="#">Two</a></strong></p>
+            <p><strong><a href="#">Three</a></strong></p>
         </div>
     </li>
     <li>
-        <h3>Technology</h3>
+        <h5>Technology</h5>
+        <span>&#43;</span>
         <div class="panel">
-            <h4><a href="javascript;">&#43;One</a></h4>
-            <h4><a href="javascript;">&#43;Two</a></h4>
-            <h4><a href="javascript;">&#43;Three</a></h4>
+            <p><strong><a href="#">One</a></strong></p>
+            <p><strong><a href="#">Two</a></strong></p>
+            <p><strong><a href="#">Three</a></strong></p>
         </div>
     </li>
     <li>
-        <h3>Politics</h3>
+        <h5>Politics</h5>
+        <span>&#43;</span>
         <div class="panel">
-            <h4><a href="javascript;">&#43;One</a></h4>
-            <h4><a href="javascript;">&#43;Two</a></h4>
-            <h4><a href="javascript;">&#43;Three</a></h4>
+            <p><strong><a href="#">One</a></strong></p>
+            <p><strong><a href="#">Two</a></strong></p>
+            <p><strong><a href="#">Three</a></strong></p>
         </div>
     </li>
 </ul>
@@ -99,7 +102,7 @@ $(document).ready(function () {
 //read-feed.php
 //our simplest example of consuming an RSS feed
 
-  $request = "https://news.google.com/news?cf=all&hl=en&pz=1&ned=us&q=Kanye+West&output=rss";
+  $request = "https://news.google.com/news?cf=all&hl=en&pz=1&ned=us&output=rss";
   $response = file_get_contents($request);
   $xml = simplexml_load_string($response);
   print '<h1>' . $xml->channel->title . '</h1>';

@@ -7705,7 +7705,6 @@ td.visible-print {
 #sidebar-right {
     float:right;
     width:75%;
-    border-left:1px solid darkgray;
 }
 
 #sidebar-right h1 {
@@ -7744,3 +7743,9 @@ td.visible-print {
     margin:5px 0;
 	display:none;
 }	
+
+/* NEWS FEED STYLES */
+
+/*a {
+    border-top: solid 1px black;
+}*/
