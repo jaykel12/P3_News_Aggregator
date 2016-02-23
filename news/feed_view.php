@@ -1,6 +1,6 @@
 <?php
 /**
- * index.php the index of the news app
+ * feed_view.php a view of a feed
  *
  * based on demo_shared.php
  *
@@ -20,7 +20,7 @@
 # '../' works for a sub-folder.  use './' for the root
 
 require '../inc_0700/config_inc.php'; #provides configuration, pathing, error handling, db credentials
-require 'News.php';
+require_once 'News.php';
 require_once 'Feed.php';
 
 
@@ -39,6 +39,13 @@ $config->sidebar2 = ''; #goes inside right side of page
 $config->nav1["page.php"] = "New Page!"; #add a new page to end of nav1 (viewable this page only)!!
 $config->nav1 = array("page.php"=>"New Page!") + $config->nav1; #add a new page to beginning of nav1 (viewable this page only)!!
 */
+#checks for valid id
+if (isset($_GET['id']) && (int)$_GET['id'] > 0) {//good data, process!
+    $id = (int)$_GET['id'];
+} else {//bad data, you go away now!
+    //this is redirection in PHP:
+    header('Location:index.php');
+}
 
 //END CONFIG AREA ---------------------------------------------------------- 
 
@@ -67,12 +74,10 @@ $(document).ready(function () {
 </script>
 
 <?php
-
 $myNews = new News();
 
 $myNews->getNewsNav();
 
-$myNews->getNewsFeed(0);
-
+$myNews->getNewsFeed($id);
 get_footer(); #defaults to footer_inc.php
 ?>
