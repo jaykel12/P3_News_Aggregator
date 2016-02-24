@@ -2,19 +2,17 @@
 /**
  * feed_view.php a view of a feed
  *
- * based on demo_shared.php
+ * based on demo_shared.php Bill Newman <williamnewman@gmail.com>
  *
- * demo_idb.php is both a test page for your IDB shared mysqli connection, and a starting point for 
- * building DB applications using IDB connections
- *
- * @package nmCommon
- * @author Bill Newman <williamnewman@gmail.com>
- * @version 2.09 2011/05/09
- * @link http://www.newmanix.com/
+ * @author Israel Santiago, Milo Sherman and Jaykel Torres
+ * @version 1.0 2016/02/23
+ * @link http://neoazareth.com/wn16/news/
  * @license http://opensource.org/licenses/osl-3.0.php Open Software License ("OSL") v. 3.0
  * @see config_inc.php  
  * @see header_inc.php
- * @see footer_inc.php 
+ * @see footer_inc.php
+ * @see News.php
+ * @see Feed.php
  * @todo none
  */
 # '../' works for a sub-folder.  use './' for the root
@@ -51,6 +49,7 @@ if (isset($_GET['id']) && (int)$_GET['id'] > 0) {//good data, process!
 
 get_header(); #defaults to header_inc.php
 ?>
+<!--Title of the page and javascript by Milo-->
 <h3 align="center">News</h3>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
@@ -74,9 +73,12 @@ $(document).ready(function () {
 </script>
 
 <?php
+//instatiates a News object
 $myNews = new News();
 
+//calls the getNewsNav method to disply news nav
 $myNews->getNewsNav();
 
+//calls the getNewsFeed method to display the feed view
 $myNews->getNewsFeed($id);
 ?>
