@@ -79,5 +79,4 @@ $myNews = new News();
 $myNews->getNewsNav();
 
 $myNews->getNewsFeed($id);
-get_footer(); #defaults to footer_inc.php
 ?>

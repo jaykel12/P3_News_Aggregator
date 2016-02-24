@@ -53,6 +53,7 @@ class News
                 echo $string;
             }
         }
+        
         echo '</ul></div>';
     }
     

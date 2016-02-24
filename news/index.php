@@ -74,5 +74,4 @@ $myNews->getNewsNav();
 
 $myNews->getNewsFeed(0);
 
-get_footer(); #defaults to footer_inc.php
 ?>

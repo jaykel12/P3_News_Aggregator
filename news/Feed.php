@@ -59,7 +59,8 @@ class Feed
             echo '<a href="' . $story->link . '">' . $story->title . '</a><br />'; 
             echo '<p>' . $story->description . '</p><br /><br />';
         }
-
+        
+        get_footer(); #defaults to footer_inc.php
         echo '</div>';
     }
 }
