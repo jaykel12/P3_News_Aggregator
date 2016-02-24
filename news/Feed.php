@@ -56,8 +56,9 @@ class Feed
         print '<h1>' . $this->feedName . '</h1>';
         foreach($xml->channel->item as $story)
         {
+            $desc = str_replace('<br><div style="padding-top:0.8em;"><img alt="" height="1" width="1">','',$story->description);
             echo '<a href="' . $story->link . '">' . $story->title . '</a><br />'; 
-            echo '<p>' . $story->description . '</p><br /><br />';
+            echo '<p>' . $desc . '</p><br /><br />';
         }
         
         get_footer(); #defaults to footer_inc.php
