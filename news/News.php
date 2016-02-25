@@ -41,7 +41,7 @@ class News
     /**
      *function that displays the News navigation menu
      */
-    public function getNewsNav()
+    public function getNewsNav($id)
     {
         echo '<div id="sidebar-left">
         <h3 class="sidebar-left-header">Categories</h3>
@@ -72,6 +72,22 @@ class News
                 echo $string;
             }
         }
+        if ($id != 0 && isset($_SESSION["feeds"]["$id"])) {
+        	//if there is one unserializes the object
+            $myFeed = unserialize($_SESSION["feeds"]["$id"]);
+            /*it then checks if the time is still valid and that the user doesn't
+            *want to refresh the feed*/
+            if ($myFeed->timeCreated + 600 > time() && !(isset($_GET["refresh"]))){
+                echo '<p>Last update: '.date("h:i",$myFeed->timeCreated).' 
+                <a href="feed_view.php?id='.$myFeed->id.'&amp;refresh=true"><strong>&#x21bb;</strong></a></p>';
+                /*echo 'This is from a session that started at ' 
+                    .date("h:i",$myFeed->timeCreated) . '. It is set to expire in 10 minutes.';
+                echo '
+                <a href="feed_view.php?id='.$myFeed->id.'&refresh=true">
+                		Click here to refresh the feed</a>
+                ';*/
+            }
+        }
         echo '</ul></div>';
     }
     
@@ -90,25 +106,20 @@ class News
             /*it then checks if the time is still valid and that the user doesn't
             *want to refresh the feed*/
             if ($myFeed->timeCreated + 600 > time() && !(isset($_GET["refresh"]))){
-                echo 'This is from a session that started at ' 
-                    .date("h:i",$myFeed->timeCreated) . '. It is set to expire in 10 minutes.';
-                echo '
-                <a href="feed_view.php?id='.$myFeed->id.'&refresh=true">
-                		Click here to refresh the feed</a>
-                ';
                 $myFeed->getFeed();
             }
             else
-            {
+            {#if not creates a fresh feed and saves the object into the session
                 $myFeed = new Feed($id);
                 $_SESSION["feeds"]["$id"] = serialize($myFeed);
                 $myFeed->getFeed();
             }
-        } else {
-            if ($id > 0) {
+        } else {#if there is no object in session
+            if ($id > 0) {#checks that the id is not equal 0 (0 is a top stories view)
                 $myFeed = new Feed($id);
+                //saves the feed into the session
                 $_SESSION["feeds"]["$id"] = serialize($myFeed);
-            } else {
+            } else {#creates a top stories view by default
                 $myFeed = new Feed();
             }
             $myFeed->getFeed();

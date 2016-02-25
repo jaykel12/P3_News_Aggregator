@@ -70,7 +70,7 @@ $(document).ready(function () {
 $myNews = new News();
 
 //calls the getNewsNav method to disply news nav
-$myNews->getNewsNav();
+$myNews->getNewsNav(0);
 
 //calls the getNewsFeed method to display the feed view
 $myNews->getNewsFeed(0);
