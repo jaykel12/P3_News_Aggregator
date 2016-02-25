@@ -7749,3 +7749,17 @@ td.visible-print {
 /*a {
     border-top: solid 1px black;
 }*/
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width:600px) {
+#sidebar-left{
+    clear:both;
+    position:relative;
+    width:100%;
+}
+#sidebar-right{
+    clear:both;
+    width:100%;
+}
+}
