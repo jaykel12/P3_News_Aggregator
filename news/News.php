@@ -80,12 +80,6 @@ class News
             if ($myFeed->timeCreated + 600 > time() && !(isset($_GET["refresh"]))){
                 echo '<p>Last update: '.date("h:i",$myFeed->timeCreated).' 
                 <a href="feed_view.php?id='.$myFeed->id.'&amp;refresh=true"><strong>&#x21bb;</strong></a></p>';
-                /*echo 'This is from a session that started at ' 
-                    .date("h:i",$myFeed->timeCreated) . '. It is set to expire in 10 minutes.';
-                echo '
-                <a href="feed_view.php?id='.$myFeed->id.'&refresh=true">
-                		Click here to refresh the feed</a>
-                ';*/
             }
         }
         echo '</ul></div>';
@@ -96,6 +90,7 @@ class News
      *valid feed, pulling data from the database or creating a default top stories view
      *
      *@param $id to be used to idetify the subcategory
+     *@todo refactor
      */
     public function getNewsFeed($id)
     {

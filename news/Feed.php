@@ -63,13 +63,17 @@ class Feed
         $sqlFeed = "SELECT FeedName,FeedUrl FROM wn16_feeds WHERE FeedID = $id;";
         $singleFeed = mysqli_query(IDB::conn(),$sqlFeed) 
         or die(trigger_error(mysqli_error(IDB::conn()), E_USER_ERROR));
-        //converts the query into an associative array
-        $singleFeed = mysqli_fetch_assoc($singleFeed);
+        if (mysqli_num_rows($singleFeed) > 0) {#there are records - present data
+            //converts the query into an associative array
+            $singleFeed = mysqli_fetch_assoc($singleFeed);
 
-        $request = $singleFeed["FeedUrl"];
-        $this->feedXml = file_get_contents($request);
-        $this->feedName = $singleFeed["FeedName"];
-        $this->timeCreated = (int)time();
+            $request = $singleFeed["FeedUrl"];
+            $this->feedXml = file_get_contents($request);
+            $this->feedName = $singleFeed["FeedName"];
+            $this->timeCreated = (int)time();
+        } else {
+            header('Location:index.php');
+        }
     }
     
     /**
