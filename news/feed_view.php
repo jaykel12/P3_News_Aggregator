@@ -77,7 +77,7 @@ $(document).ready(function () {
 $myNews = new News();
 
 //calls the getNewsNav method to disply news nav
-$myNews->getNewsNav();
+$myNews->getNewsNav($id);
 
 //calls the getNewsFeed method to display the feed view
 $myNews->getNewsFeed($id);
