@@ -7711,6 +7711,10 @@ td.visible-print {
     color:black;
 }
 
+.border {
+    border-top:solid 1px #ccc;
+    
+}
 /* TOGGLE SIDEBAR */
 
 #toggle-view {

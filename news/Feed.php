@@ -92,8 +92,8 @@ class Feed
             str_replace(
             		'<br><div style="padding-top:0.8em;"><img alt="" height="1" width="1">'
             		,'',$story->description);
-            echo '<a href="' . $story->link . '">' . $story->title . '</a><br />'; 
-            echo '<p>' . $desc . '</p><br /><br />';
+            //echo '<a href="' . $story->link . '">' . $story->title . '</a><br />'; 
+            echo '<p class="border">' . $desc . '</p><br /><br />';
         }
         
         get_footer(); #defaults to footer_inc.php
