@@ -4,7 +4,7 @@
  * 
  *This class creates feed objects based on one parameter $id
  *which is passed at instatiation and then use by the constructor
- *to pull data from a db and assing other properties to the object.
+ *to pull data from a db and assigns properties to the object.
  * 
  * @author Israel Santiago, Milo Sherman and Jaykel Torres
  * @version 1.0 2016/02/23
